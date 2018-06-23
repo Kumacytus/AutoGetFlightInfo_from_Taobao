@@ -266,14 +266,14 @@ def task_query_flight():
 
     if current_time.hour == 0 and (0 <= current_time.minute <= 15):
         current_date = current_time.date() + datetime.timedelta(days=-1)
-        if not os.path.exists('[%s to %s] price history %s.txt' % (depcode, arrcode, current_date)):
+        if not os.path.exists(r'.\price history\[%s to %s] price history %s.txt' % (depcode, arrcode, current_date)):
             print('[%s] Will clear current price history data in 3 secs...' % current_time.strftime('%m-%d %H:%M'))
             time.sleep(3)
             shutil.move('price history.txt',
                         r'.\price history\[%s to %s] price history %s.txt' % (depcode, arrcode, current_date))
             print('[%s] Copy price history data SUCCESS! Clear SUCCESS!\n' % current_time.strftime('%m-%d %H:%M'))
         if os.path.exists('flights info.txt') and (os.path.getsize('flights info.txt') >= 10):
-            if not os.path.exists('[%s to %s] flights info %s.txt' % (depcode, arrcode, current_date)):
+            if not os.path.exists(r'.\flight info\[%s to %s] flights info %s.txt' % (depcode, arrcode, current_date)):
                 print('[%s] Will clear current flights data in 3 secs...' % current_time.strftime('%m-%d %H:%M'))
                 time.sleep(3)
                 shutil.move('flights info.txt',
